@@ -1,0 +1,20 @@
+ .brand-logo{
+    color: rgb(81, 151, 241);
+}
+
+.nav-test{
+    float: right;
+}
+
+@media screen and (max-width: 420px){
+.nav-wrapper{
+    font-size: 0.7rem;
+}
+}
+
+.minelister{
+    text-align: center;
+    padding-top: 2em;
+    font-size: 2rem;
+    font-family: sans-serif;
+}

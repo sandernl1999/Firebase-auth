@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autentisering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="blue lighten-3">
+
+      <!-- NAVBAR -->
+  <nav class="grey lighten-4">
+    <div class="nav-wrapper container">
+      <a href="index.html" class="overskrift" style="color: black; font-size: 2em; font-family: 'raleway';">
+        Huskelista 
+      </a>
+      <ul id="" class="nav-test">
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" style="text-align: center;" data-target="modal-account">Konto</a>
+          </li>
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text" id="logout">Logg ut</a>
+          </li>
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Lag liste</a>
+          </li>
+          <li class="logged-out" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-login">Logg inn</a>
+          </li>
+          <li class="logged-out" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Registrer deg</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content">
+          <h4>Registrer deg</h4><br />
+          <form id="signup-form">
+            <div class="input-field">
+              <input type="email" id="signup-email" required />
+              <label for="signup-email">Email adresse</label>
+            </div>
+            <div class="input-field">
+              <input type="password" id="signup-password" required />
+              <label for="signup-password">Velg passord</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="signup-bio" required />
+                <label for="signup-bio">Om deg</label>
+            </div>
+            <button class="btn yellow darken-2 z-depth-0">Registrer deg</button>
+          </form>
+        </div>
+      </div>
+
+        <!-- LOGIN MODAL -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h4>Logg inn</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email addresse</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Ditt passord</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Logg inn</button>
+      </form>
+    </div>
+  </div>
+
+
+    <!-- ACCOUNT MODAL -->
+    <div id="modal-account" class="modal">
+        <div class="modal-content center-align">
+          <h4>Konto-detaljer</h4><br />
+          <div class="account-details"></div>
+        </div>
+      </div>
+    
+
+      <!-- CREATE GUIDE MODAL -->
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Lage huskeliste</h4><br />
+      <form id="create-form">
+        <div class="input-field">
+          <input type="text" id="title" required>
+          <label for="title">Tittel</label>
+        </div>
+        <div class="input-field">
+          <textarea id="content" class="materialize-textarea" required></textarea>
+          <label for="content">Innhold</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Lagre</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- GUIDE LIST -->
+  <div class="minelister">Mine huskelister</div>
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 guides" style="border: none;">
+   
+    </ul>
+  </div>
+  
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var config = {
+      apiKey: "AIzaSyDdnRzxlkui8APTSGyvFXejAE50UCdblxM",
+      authDomain: "autentisering-bf8e6.firebaseapp.com",
+      projectId: "autentisering-bf8e6",
+      messagingSenderId: "75824525157",
+      appId: "1:75824525157:web:48e3d70cc4d2c887effb8c",
+      measurementId: "G-G4431Y3W3J"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(config);
+
+    // Make auth and firestore references
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // update firestore settings
+    db.settings({ timeStampsInSnapshots: true });
+  </script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
+    
+</body>
+</html>
